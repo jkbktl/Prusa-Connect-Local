@@ -25,9 +25,7 @@
   "paths": {
     "/api/connection": {
       "get": {
-        "tags": [
-          "octoprint"
-        ],
+        "tags": ["octoprint"],
         "summary": "Retrieve a mock for current connection settings.",
         "security": [
           {
@@ -59,9 +57,7 @@
         }
       },
       "post": {
-        "tags": [
-          "octoprint"
-        ],
+        "tags": ["octoprint"],
         "summary": "Mock for issue a connection command. Do not do anything.",
         "security": [
           {
@@ -80,15 +76,13 @@
     },
     "/api/timelapse": {
       "get": {
-        "tags": [
-          "octoprint"
-        ],
+        "tags": ["octoprint"],
         "security": [
           {
             "ApiKeyAuth": []
           }
         ],
-        "summary": "Retrieves a moked list of timelapses and the current config.",
+        "summary": "Retrieve a mcoked list of timelapses and the current config.",
         "responses": {
           "200": {
             "description": "OK",
@@ -136,10 +130,8 @@
     },
     "/api/printerprofiles": {
       "get": {
-        "tags": [
-          "octoprint"
-        ],
-        "summary": "Retrive a mock of octoprinter printer profile",
+        "tags": ["octoprint"],
+        "summary": "Retrieve a mock of octoprinter printer profile",
         "security": [
           {
             "ApiKeyAuth": []
@@ -169,10 +161,8 @@
     },
     "/api/printer": {
       "get": {
-        "tags": [
-          "octoprint"
-        ],
-        "summary": "Retrive the current printer state",
+        "tags": ["octoprint"],
+        "summary": "Retrieve the current printer state",
         "security": [
           {
             "ApiKeyAuth": []
@@ -221,10 +211,8 @@
     },
     "/api/printer/sd": {
       "get": {
-        "tags": [
-          "octoprint"
-        ],
-        "summary": "Retrieves the current state of the printer’s SD card.",
+        "tags": ["octoprint"],
+        "summary": "Retrieve the current state of the printer’s SD card.",
         "security": [
           {
             "ApiKeyAuth": []
@@ -250,9 +238,7 @@
     },
     "/api/job": {
       "get": {
-        "tags": [
-          "octoprint"
-        ],
+        "tags": ["octoprint"],
         "summary": "Retrieve information about the current job (if there is one).",
         "security": [
           {
@@ -298,9 +284,7 @@
         }
       },
       "post": {
-        "tags": [
-          "octoprint"
-        ],
+        "tags": ["octoprint"],
         "summary": "Issue a job command.",
         "security": [
           {
@@ -315,12 +299,7 @@
                 "properties": {
                   "command": {
                     "type": "string",
-                    "enum": [
-                      "start",
-                      "restart",
-                      "pause",
-                      "cancel"
-                    ],
+                    "enum": ["start", "restart", "pause", "cancel"],
                     "example": "start"
                   }
                 }
@@ -346,10 +325,8 @@
     },
     "/api/system/commands": {
       "get": {
-        "tags": [
-          "octoprint"
-        ],
-        "summary": "Retrieves all configured system commands. Currently just a mock.",
+        "tags": ["octoprint"],
+        "summary": "Retrieve all configured system commands. Currently just a mock.",
         "security": [
           {
             "ApiKeyAuth": []
@@ -374,10 +351,8 @@
     },
     "/api/users": {
       "get": {
-        "tags": [
-          "octoprint"
-        ],
-        "summary": "Retrieves a list of all registered users in OctoPrint. Currently just a mock.",
+        "tags": ["octoprint"],
+        "summary": "Retrieve a list of all registered users in OctoPrint. Currently just a mock.",
         "security": [
           {
             "ApiKeyAuth": []
@@ -418,10 +393,7 @@
           "schema": {
             "type": "string",
             "default": "local",
-            "enum": [
-              "local",
-              "sdcard"
-            ]
+            "enum": ["local", "sdcard"]
           }
         },
         {
@@ -435,9 +407,7 @@
         }
       ],
       "get": {
-        "tags": [
-          "octoprint"
-        ],
+        "tags": ["octoprint"],
         "summary": "Download a file.",
         "security": [
           {
@@ -470,9 +440,7 @@
     },
     "/api/files": {
       "get": {
-        "tags": [
-          "octoprint"
-        ],
+        "tags": ["octoprint"],
         "summary": "Retrieve all files’ and folders’ information.",
         "security": [
           {
@@ -532,17 +500,12 @@
           "schema": {
             "type": "string",
             "default": "local",
-            "enum": [
-              "local",
-              "sdcard"
-            ]
+            "enum": ["local", "sdcard"]
           }
         }
       ],
       "get": {
-        "tags": [
-          "octoprint"
-        ],
+        "tags": ["octoprint"],
         "summary": "Retrieve all files’ and folders’ information for the target location.",
         "security": [
           {
@@ -595,9 +558,7 @@
         }
       },
       "post": {
-        "tags": [
-          "octoprint"
-        ],
+        "tags": ["octoprint"],
         "summary": "Upload file or create folder.",
         "security": [
           {
@@ -664,10 +625,7 @@
           "schema": {
             "type": "string",
             "default": "local",
-            "enum": [
-              "local",
-              "sdcard"
-            ]
+            "enum": ["local", "sdcard"]
           }
         },
         {
@@ -681,9 +639,7 @@
         }
       ],
       "get": {
-        "tags": [
-          "octoprint"
-        ],
+        "tags": ["octoprint"],
         "summary": "Retrieve a specific file’s or folder’s information.",
         "security": [
           {
@@ -739,9 +695,7 @@
         }
       },
       "post": {
-        "tags": [
-          "octoprint"
-        ],
+        "tags": ["octoprint"],
         "summary": "Issue a file command to an existing file.",
         "security": [
           {
@@ -782,9 +736,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "octoprint"
-        ],
+        "tags": ["octoprint"],
         "summary": "Delete a file or folder.",
         "security": [
           {
@@ -1069,10 +1021,7 @@
                 "nullable": true
               },
               "origin": {
-                "enum": [
-                  "local",
-                  "sdcard"
-                ],
+                "enum": ["local", "sdcard"],
                 "nullable": true
               },
               "path": {
@@ -1264,10 +1213,7 @@
           "size": 873151,
           "date": 1574156567,
           "type": "machinecode",
-          "typePath": [
-            "machinecode",
-            "gcode"
-          ],
+          "typePath": ["machinecode", "gcode"],
           "hash": "5f972cc1cfb91f91f7c70d0dff6a0462a9de1d41",
           "refs": {
             "resource": "http://localhost/octoprint/api/files/local/internal/examples/harry_potter_hogwarts_a_mohimont.sl1",
@@ -1314,9 +1260,7 @@
           "name": "examples",
           "size": 873151,
           "type\"": "folder",
-          "typePath\"": [
-            "folder"
-          ],
+          "typePath\"": ["folder"],
           "refs": {
             "resource": "http://localhost/octoprint/api/files/local/internal/examples"
           }
@@ -1415,10 +1359,7 @@
             "description": "The name of the folder to create. Ignored when uploading a file."
           }
         },
-        "required": [
-          "path",
-          "foldername"
-        ]
+        "required": ["path", "foldername"]
       },
       "OctoUploadFile": {
         "properties": {
@@ -1435,10 +1376,7 @@
             "description": "The file to upload, including a valid filename."
           }
         },
-        "required": [
-          "path",
-          "file"
-        ]
+        "required": ["path", "file"]
       },
       "OctoFileUploaded": {
         "type": "object",

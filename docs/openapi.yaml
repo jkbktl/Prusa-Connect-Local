@@ -1,16 +1,16 @@
 openapi: 3.0.1
 info:
   title: Connect
-  description: 'This is a printer connect webservice. It is compatible with another 3D printer services, so many applications which use this service'
+  description: "This is a printer connect webservice. It is compatible with another 3D printer services, so many applications which use this service"
   contact:
     email: developer@prusa3d.cz
   license:
     name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
   version: 1.0.0
 externalDocs:
   description: Find out more about API
-  url: 'http://connect.prusa3d.cz'
+  url: "http://connect.prusa3d.cz"
 tags:
   - name: octoprint
     description: Octoprint compatible
@@ -23,7 +23,7 @@ paths:
       security:
         - ApiKeyAuth: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -31,11 +31,11 @@ paths:
                 type: object
                 properties:
                   current:
-                    $ref: '#/components/schemas/OctoConnCurrent'
+                    $ref: "#/components/schemas/OctoConnCurrent"
                   options:
-                    $ref: '#/components/schemas/OctoConnOptions'
-        '403':
-          $ref: '#/components/responses/Unauthorized'
+                    $ref: "#/components/schemas/OctoConnOptions"
+        "403":
+          $ref: "#/components/responses/Unauthorized"
     post:
       tags:
         - octoprint
@@ -43,19 +43,19 @@ paths:
       security:
         - ApiKeyAuth: []
       responses:
-        '204':
+        "204":
           description: No Content
-        '403':
-          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: "#/components/responses/Unauthorized"
   /api/timelapse:
     get:
       tags:
         - octoprint
       security:
         - ApiKeyAuth: []
-      summary: Retrieves a moked list of timelapses and the current config.
+      summary: Retrieve a mocked list of timelapses and the current config.
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -77,20 +77,20 @@ paths:
                       nullable: true
                 example:
                   config:
-                    type: 'off'
+                    type: "off"
                   enabled: false
                   files: []
-        '403':
-          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: "#/components/responses/Unauthorized"
   /api/printerprofiles:
     get:
       tags:
         - octoprint
-      summary: Retrive a mock of octoprinter printer profile
+      summary: Retrieve a mock of octoprinter printer profile
       security:
         - ApiKeyAuth: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -98,14 +98,14 @@ paths:
                 type: object
                 properties:
                   profiles:
-                    $ref: '#/components/schemas/OctoProfiles'
-        '403':
-          $ref: '#/components/responses/Unauthorized'
+                    $ref: "#/components/schemas/OctoProfiles"
+        "403":
+          $ref: "#/components/responses/Unauthorized"
   /api/printer:
     get:
       tags:
         - octoprint
-      summary: Retrive the current printer state
+      summary: Retrieve the current printer state
       security:
         - ApiKeyAuth: []
       parameters:
@@ -117,7 +117,7 @@ paths:
             items:
               type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -125,30 +125,30 @@ paths:
                 type: object
                 properties:
                   temperature:
-                    $ref: '#/components/schemas/OctoTemperatureState'
+                    $ref: "#/components/schemas/OctoTemperatureState"
                   sd:
-                    $ref: '#/components/schemas/OctoSDState'
+                    $ref: "#/components/schemas/OctoSDState"
                   state:
-                    $ref: '#/components/schemas/OctoPrinterState'
-        '403':
-          $ref: '#/components/responses/Unauthorized'
+                    $ref: "#/components/schemas/OctoPrinterState"
+        "403":
+          $ref: "#/components/responses/Unauthorized"
   /api/printer/sd:
     get:
       tags:
         - octoprint
-      summary: Retrieves the current state of the printer’s SD card.
+      summary: Retrieve the current state of the printer’s SD card.
       security:
         - ApiKeyAuth: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: object
-                $ref: '#/components/schemas/OctoSDState'
-        '403':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/OctoSDState"
+        "403":
+          $ref: "#/components/responses/Unauthorized"
   /api/job:
     get:
       tags:
@@ -157,7 +157,7 @@ paths:
       security:
         - ApiKeyAuth: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -165,9 +165,9 @@ paths:
                 type: object
                 properties:
                   job:
-                    $ref: '#/components/schemas/OctoJob'
+                    $ref: "#/components/schemas/OctoJob"
                   progress:
-                    $ref: '#/components/schemas/OctoProgress'
+                    $ref: "#/components/schemas/OctoProgress"
                   state:
                     enum:
                       - Operational
@@ -177,9 +177,9 @@ paths:
                       - Cancelling
                       - Error
                       - Offline
-        '403':
-          $ref: '#/components/responses/Unauthorized'
-        '409':
+        "403":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
           description: File not found or wrong format.
     post:
       tags:
@@ -202,39 +202,39 @@ paths:
                     - cancel
                   example: start
       responses:
-        '204':
+        "204":
           description: No error
-        '403':
-          $ref: '#/components/responses/Unauthorized'
-        '409':
-          description: 'If not is project, file not found or printer is printing.'
-        '501':
+        "403":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          description: "If not is project, file not found or printer is printing."
+        "501":
           description: Unsupported command.
   /api/system/commands:
     get:
       tags:
         - octoprint
-      summary: Retrieves all configured system commands. Currently just a mock.
+      summary: Retrieve all configured system commands. Currently just a mock.
       security:
         - ApiKeyAuth: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OctoCommands'
-        '403':
-          $ref: '#/components/responses/Unauthorized'
+                $ref: "#/components/schemas/OctoCommands"
+        "403":
+          $ref: "#/components/responses/Unauthorized"
   /api/users:
     get:
       tags:
         - octoprint
-      summary: Retrieves a list of all registered users in OctoPrint. Currently just a mock.
+      summary: Retrieve a list of all registered users in OctoPrint. Currently just a mock.
       security:
         - ApiKeyAuth: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -244,15 +244,15 @@ paths:
                   users:
                     type: array
                     items:
-                      $ref: '#/components/schemas/OctoUsers'
-        '403':
-          $ref: '#/components/responses/Unauthorized'
-  '/api/downloads/{target}/{filename}':
+                      $ref: "#/components/schemas/OctoUsers"
+        "403":
+          $ref: "#/components/responses/Unauthorized"
+  "/api/downloads/{target}/{filename}":
     parameters:
       - in: path
         name: target
         required: true
-        description: 'The target location to which to upload the file (local, sdcard).'
+        description: "The target location to which to upload the file (local, sdcard)."
         schema:
           type: string
           default: local
@@ -272,18 +272,18 @@ paths:
       security:
         - ApiKeyAuth: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/octet-stream:
               schema:
                 type: string
                 format: binary
-        '403':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
+        "403":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
           description: File not found.
-        '415':
+        "415":
           description: Unsupported Media Type.
   /api/files:
     get:
@@ -305,24 +305,24 @@ paths:
             type: boolean
           required: false
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OctoAllFilesInfo'
+                $ref: "#/components/schemas/OctoAllFilesInfo"
           headers:
             ETag:
               schema:
                 type: string
-        '403':
-          $ref: '#/components/responses/Unauthorized'
-  '/api/files/{target}':
+        "403":
+          $ref: "#/components/responses/Unauthorized"
+  "/api/files/{target}":
     parameters:
       - in: path
         name: target
         required: true
-        description: 'The target location to which to upload the file (local, sdcard).'
+        description: "The target location to which to upload the file (local, sdcard)."
         schema:
           type: string
           default: local
@@ -348,19 +348,19 @@ paths:
             type: boolean
           required: false
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OctoAllFilesInfo'
+                $ref: "#/components/schemas/OctoAllFilesInfo"
           headers:
             ETag:
               schema:
                 type: string
-        '403':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
+        "403":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
           description: Not Found
     post:
       tags:
@@ -372,35 +372,35 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/OctoUploadFile'
+              $ref: "#/components/schemas/OctoUploadFile"
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/OctoCreateFolder'
+              $ref: "#/components/schemas/OctoCreateFolder"
       responses:
-        '201':
+        "201":
           description: No error
           content:
             application/json:
               schema:
                 oneOf:
-                  - $ref: '#/components/schemas/OctoFileUploaded'
-                  - $ref: '#/components/schemas/OctoFolderCreated'
-        '400':
+                  - $ref: "#/components/schemas/OctoFileUploaded"
+                  - $ref: "#/components/schemas/OctoFolderCreated"
+        "400":
           description: Could not create folder or file not found.
-        '403':
-          $ref: '#/components/responses/Unauthorized'
-        '409':
+        "403":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
           description: File already exist.
-        '415':
+        "415":
           description: Unsupported Media Type.
-        '500':
+        "500":
           description: File is too big.
-  '/api/files/{target}/{filename}':
+  "/api/files/{target}/{filename}":
     parameters:
       - in: path
         name: target
         required: true
-        description: 'The target location to which to upload the file (local, sdcard).'
+        description: "The target location to which to upload the file (local, sdcard)."
         schema:
           type: string
           default: local
@@ -432,21 +432,21 @@ paths:
             type: boolean
           required: false
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OctoFileOrFolderInfo'
+                $ref: "#/components/schemas/OctoFileOrFolderInfo"
           headers:
             ETag:
               schema:
                 type: string
-        '304':
+        "304":
           description: Not Modified.
-        '403':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
+        "403":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
           description: Not Found
     post:
       tags:
@@ -458,21 +458,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OctoFileCommand'
+              $ref: "#/components/schemas/OctoFileCommand"
       responses:
-        '204':
+        "204":
           description: No error.
-        '400':
+        "400":
           description: Mandatory parameter is missing.
-        '403':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
+        "403":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
           description: Not Found.
-        '409':
+        "409":
           description: If the file is currently being printed.
-        '415':
+        "415":
           description: Unsupported Media Type.
-        '501':
+        "501":
           description: Unsupported command.
     delete:
       tags:
@@ -481,13 +481,13 @@ paths:
       security:
         - ApiKeyAuth: []
       responses:
-        '204':
+        "204":
           description: No error
-        '403':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
+        "403":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
           description: If location is neither local nor sdcard or the requested file was not found
-        '409':
+        "409":
           description: If the file to be deleted is currently being printed
 components:
   schemas:
@@ -590,7 +590,7 @@ components:
               example: false
             resource:
               type: string
-              example: 'http://localhost/octoprint/api/printerprofiles/_default'
+              example: "http://localhost/octoprint/api/printerprofiles/_default"
     timestamp:
       type: number
       description: Unix Timestamep
@@ -616,15 +616,15 @@ components:
       type: object
       properties:
         tool0:
-          $ref: '#/components/schemas/OctoTemperatureData'
+          $ref: "#/components/schemas/OctoTemperatureData"
         tool1:
-          $ref: '#/components/schemas/OctoTemperatureData'
+          $ref: "#/components/schemas/OctoTemperatureData"
         tool2:
-          $ref: '#/components/schemas/OctoTemperatureData'
+          $ref: "#/components/schemas/OctoTemperatureData"
         tool3:
-          $ref: '#/components/schemas/OctoTemperatureData'
+          $ref: "#/components/schemas/OctoTemperatureData"
         bed:
-          $ref: '#/components/schemas/OctoTemperatureData'
+          $ref: "#/components/schemas/OctoTemperatureData"
     OctoSDState:
       type: object
       properties:
@@ -780,7 +780,7 @@ components:
             type: string
     OctoFileInfo:
       allOf:
-        - $ref: '#/components/schemas/OctoCommonFileInfo'
+        - $ref: "#/components/schemas/OctoCommonFileInfo"
         - type: object
       properties:
         refs:
@@ -821,8 +821,8 @@ components:
           - gcode
         hash: 5f972cc1cfb91f91f7c70d0dff6a0462a9de1d41
         refs:
-          resource: 'http://localhost/octoprint/api/files/local/internal/examples/harry_potter_hogwarts_a_mohimont.sl1'
-          download: 'http://localhost/octoprint/api/downloads/local/internal/examples/harry_potter_hogwarts_a_mohimont.sl1'
+          resource: "http://localhost/octoprint/api/files/local/internal/examples/harry_potter_hogwarts_a_mohimont.sl1"
+          download: "http://localhost/octoprint/api/downloads/local/internal/examples/harry_potter_hogwarts_a_mohimont.sl1"
         gcodeAnalysis:
           estimatedPrintTime: 2445
           dimensions:
@@ -830,7 +830,7 @@ components:
           material: Prusa Orange Tough 0.05
     OctoFolderInfo:
       allOf:
-        - $ref: '#/components/schemas/OctoCommonFileInfo'
+        - $ref: "#/components/schemas/OctoCommonFileInfo"
         - type: object
       properties:
         refs:
@@ -852,24 +852,24 @@ components:
         typePath":
           - folder
         refs:
-          resource: 'http://localhost/octoprint/api/files/local/internal/examples'
+          resource: "http://localhost/octoprint/api/files/local/internal/examples"
     OctoFullFolderInfo:
       allOf:
-        - $ref: '#/components/schemas/OctoFolderInfo'
+        - $ref: "#/components/schemas/OctoFolderInfo"
         - type: object
       properties:
         children:
           type: array
           items:
             oneOf:
-              - $ref: '#/components/schemas/OctoFileInfo'
-              - $ref: '#/components/schemas/OctoFolderInfo'
+              - $ref: "#/components/schemas/OctoFileInfo"
+              - $ref: "#/components/schemas/OctoFolderInfo"
             discriminator:
               propertyName: type
     OctoFileOrFolderInfo:
       oneOf:
-        - $ref: '#/components/schemas/OctoFileInfo'
-        - $ref: '#/components/schemas/OctoFullFolderInfo'
+        - $ref: "#/components/schemas/OctoFileInfo"
+        - $ref: "#/components/schemas/OctoFullFolderInfo"
     OctoAllFilesInfo:
       type: object
       properties:
@@ -877,8 +877,8 @@ components:
           type: array
           items:
             oneOf:
-              - $ref: '#/components/schemas/OctoFileInfo'
-              - $ref: '#/components/schemas/OctoFullFolderInfo'
+              - $ref: "#/components/schemas/OctoFileInfo"
+              - $ref: "#/components/schemas/OctoFullFolderInfo"
         free:
           type: integer
         total:
@@ -915,7 +915,7 @@ components:
           items:
             type: string
             format: binary
-          description: 'The file to upload, including a valid filename.'
+          description: "The file to upload, including a valid filename."
       required:
         - path
         - file
@@ -944,10 +944,10 @@ components:
                   properties:
                     resource:
                       type: string
-                      example: 'http://localhost/octoprint/api/files/local/internal/examples/harry_potter_hogwarts_a_mohimont.sl1'
+                      example: "http://localhost/octoprint/api/files/local/internal/examples/harry_potter_hogwarts_a_mohimont.sl1"
                     download:
                       type: string
-                      example: 'http://localhost/octoprint/api/downloads/local/internal/examples/harry_potter_hogwarts_a_mohimont.sl1'
+                      example: "http://localhost/octoprint/api/downloads/local/internal/examples/harry_potter_hogwarts_a_mohimont.sl1"
     OctoFolderCreated:
       type: object
       properties:
